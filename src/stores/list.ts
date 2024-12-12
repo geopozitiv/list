@@ -15,16 +15,13 @@ export const useListStore = defineStore("list", {
 		deleteItem({ id }: { id: string }) {
 			const idx = this.list.findIndex((item) => item.id === id);
 			if (idx > -1) {
-				// only splice array when item is found
-				this.list.splice(idx, 1); // 2nd parameter means remove one item only
+				this.list.splice(idx, 1);
 			}
 		},
 		addItem({ id, data }: { id: string; data: { id: string; name: string } }) {
 			const idx = this.list.findIndex((item) => item.id === id);
-			console.log("idx", idx, id, data);
 			if (idx > -1) {
-				// only splice array when item is found
-				this.list.splice(idx, 0, data); // 2nd parameter means remove one item only
+				this.list.splice(idx, 0, data);
 			}
 		},
 		addSearch({ data }: { data: string }) {
@@ -34,7 +31,6 @@ export const useListStore = defineStore("list", {
 	getters: {
 		getList(state) {
 			if (state.search) {
-				// const re = new RegExp(`\\b${state.search}\\b`, "gi");
 				return state.list.filter((item) => {
 					const ff = item.name
 						.toLowerCase()
