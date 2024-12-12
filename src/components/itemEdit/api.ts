@@ -1,9 +1,9 @@
-import { aliClientUpdateItem, aliClientDeleteItem } from "@/api/apiClient";
+import { apiClientUpdateItem, apiClientDeleteItem } from "@/api/apiClient";
 
 export const saveItemToApi = ({ id, data }: { id: string; data: string }) => {
-	aliClientUpdateItem({ id, data });
+	apiClientUpdateItem({ id, data });
 };
 
 export const deleteItemToApi = ({ id }: { id: string }) => {
-	aliClientDeleteItem({ id });
+	apiClientDeleteItem({ id });
 };

@@ -14,7 +14,8 @@ const { list } = useListStore()
         :key="index"
         :id="item.id" 
         :name="item.name"
-        />
+        >
+        </Item>
     </v-list>
 </v-card>
 </template>

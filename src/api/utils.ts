@@ -17,3 +17,15 @@ export const deleteItemInStorage = ({ id }: { id: string }) => {
 	const useList = useListStore();
 	useList.deleteItem({ id });
 };
+
+export const addItemInStorage = ({
+	id,
+	data,
+}: {
+	id: string;
+	data: { id: string; name: string };
+}) => {
+	// const dataLocal = localStorage.getItem(dataKey);
+	const useList = useListStore();
+	useList.addItem({ id, data });
+};

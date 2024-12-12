@@ -18,5 +18,13 @@ export const useListStore = defineStore("list", {
 				this.list.splice(idx, 1); // 2nd parameter means remove one item only
 			}
 		},
+		addItem({ id, data }: { id: string; data: { id: string; name: string } }) {
+			const idx = this.list.findIndex((item) => item.id === id);
+			console.log("idx", idx, id, data);
+			if (idx > -1) {
+				// only splice array when item is found
+				this.list.splice(idx, 0, data); // 2nd parameter means remove one item only
+			}
+		},
 	},
 });

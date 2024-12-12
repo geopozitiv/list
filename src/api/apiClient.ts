@@ -1,6 +1,10 @@
-import { updateItemInStorage, deleteItemInStorage } from "./utils";
+import {
+	updateItemInStorage,
+	deleteItemInStorage,
+	addItemInStorage,
+} from "./utils";
 
-export const aliClientUpdateItem = ({
+export const apiClientUpdateItem = ({
 	id,
 	data,
 }: {
@@ -10,6 +14,16 @@ export const aliClientUpdateItem = ({
 	updateItemInStorage({ id, data });
 };
 
-export const aliClientDeleteItem = ({ id }: { id: string }) => {
+export const apiClientDeleteItem = ({ id }: { id: string }) => {
 	deleteItemInStorage({ id });
+};
+
+export const apiClientAddItem = ({
+	id,
+	data,
+}: {
+	id: string;
+	data: { id: string; name: string };
+}) => {
+	addItemInStorage({ id, data });
 };
