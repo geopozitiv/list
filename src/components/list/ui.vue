@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import { Item } from '@/components'
 import { useListStore } from '@/stores'
-const { list } = useListStore()
+import { Search } from '../search';
+import { storeToRefs } from 'pinia';
+const { getList } = storeToRefs(useListStore())
+
 </script>
 <template>
+<Search />
 <v-card
-    class="mx-auto"
-    max-width="800"
+    class="mx-auto mt-60"
+    max-width="641"
+    min-width="641"
   >
     <v-list>
         <Item
-        v-for="(item, index) in list"
+        v-for="(item, index) in getList"
         :key="index"
         :id="item.id" 
         :name="item.name"
@@ -19,3 +24,8 @@ const { list } = useListStore()
     </v-list>
 </v-card>
 </template>
+<style scoped>
+.mt-60 {
+    margin-top: 60px;
+}
+</style>

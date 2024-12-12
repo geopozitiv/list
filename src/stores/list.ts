@@ -5,6 +5,7 @@ import { useLocalStorage } from "@vueuse/core";
 export const useListStore = defineStore("list", {
 	state: () => ({
 		list: useLocalStorage("pinia/list", list.posts),
+		search: "",
 	}),
 	actions: {
 		updateItem({ id, data }: { id: string; data: string }) {
@@ -25,6 +26,23 @@ export const useListStore = defineStore("list", {
 				// only splice array when item is found
 				this.list.splice(idx, 0, data); // 2nd parameter means remove one item only
 			}
+		},
+		addSearch({ data }: { data: string }) {
+			this.search = data;
+		},
+	},
+	getters: {
+		getList(state) {
+			if (state.search) {
+				// const re = new RegExp(`\\b${state.search}\\b`, "gi");
+				return state.list.filter((item) => {
+					const ff = item.name
+						.toLowerCase()
+						.includes(state.search.toLowerCase());
+					if (ff) return item;
+				});
+			}
+			return state.list;
 		},
 	},
 });
